@@ -1,0 +1,30 @@
+<HTML>
+
+<HEAD>
+  <TITLE>Home Page</TITLE>
+</HEAD>
+
+<BODY>
+
+  <h1>Petition for a thing!</h1>
+
+  <p>
+    Signatures: {{ sigs|length }}
+  </p>
+  <ul>
+    {% for sig in sigs %}
+    <li>{{ sig.username }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Account stuff</h2>
+  {% if request.user.is_authenticated %}
+  <p><a href="{% url 'account_logout' %}">Log out</a></p>
+  {% else %}
+  <p><a href="{% url 'account_signup' %}">Sign up for this petition!</a></p>
+  <p><a href="{% url 'account_login' %}">Log in</a></p>
+  {% endif %}
+
+</BODY>
+
+</HTML>
